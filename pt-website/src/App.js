@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import Select from 'react-select'
 
 function App() {
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +23,7 @@ function App() {
         >
           Learn React
         </a>
+        <Select options={options} />
       </header>
     </div>
   );
