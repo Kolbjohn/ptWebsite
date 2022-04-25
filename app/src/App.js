@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Select from 'react-select'
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Link, Switch, Route } from "react-router-dom";
+import AddExercise from './components/add-exercise.component';
+import Exercise from './components/exercise.component';
+import ExercisesList from './components/exercise-list.component';
 
 function App() {
-  const [data, setData] = React.useState(null);
-
-
   const options = [
     { value: 'Head', label: 'Head' },
     { value: 'Shoulders', label: 'Shoulders' },
@@ -14,23 +15,35 @@ function App() {
     { value: 'Toes', label: 'Toes' }
   ];
 
-
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {!data ? "Loading..." : data}
-        </p>
-      </header>
+    <div>
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <a href="/tutorials" className="navbar-brand">
+            bezKoder
+          </a>
+          <div className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to={"/"} className="nav-link">
+                Tutorials
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/add"} className="nav-link">
+                Add
+              </Link>
+            </li>
+          </div>
+        </nav>
+      <div className="container mt-3">
+        <Switch>
+          <Route exact path={["/", "/tutorials"]} component={ExercisesList} />
+          <Route exact path="/add" component={AddExercise} />
+          <Route path="/tutorials/:id" component={Exercise} />
+        </Switch>
+      </div>
+      <div>
         <Select options={options} />
+      </div>
     </div>
   );
 }
