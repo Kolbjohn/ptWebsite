@@ -19,7 +19,8 @@ class App extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <AddExercise/>
+        {/* <div className="navbar navbar-expand navbar-dark bg-dark">
             <a href="/exercises" className="navbar-brand">
               bezKoder
             </a>
@@ -35,7 +36,7 @@ class App extends Component {
                 </Link>
               </li>
             </div>
-          </nav>
+          </div>
         <div className="container mt-3">
           <Routes>
             <Route path={["/", "/exercises"]} element={ExercisesList} />
