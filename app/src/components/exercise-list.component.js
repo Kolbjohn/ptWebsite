@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TutorialDataService from "../services/tutorial.service";
+import ExerciseDataService from "../services/exercise.service";
 import { Link } from "react-router-dom";
 export default class ExercisesList extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class ExercisesList extends Component {
     });
   }
   retrieveTutorials() {
-    TutorialDataService.getAll()
+    ExerciseDataService.getAll()
       .then(response => {
         this.setState({
           tutorials: response.data
@@ -52,7 +52,7 @@ export default class ExercisesList extends Component {
     });
   }
   removeAllTutorials() {
-    TutorialDataService.deleteAll()
+    ExerciseDataService.deleteAll()
       .then(response => {
         console.log(response.data);
         this.refreshList();
@@ -62,7 +62,7 @@ export default class ExercisesList extends Component {
       });
   }
   searchTitle() {
-    TutorialDataService.findByTitle(this.state.searchTitle)
+    ExerciseDataService.findByTitle(this.state.searchTitle)
       .then(response => {
         this.setState({
           tutorials: response.data
