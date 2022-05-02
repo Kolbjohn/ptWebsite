@@ -16,7 +16,7 @@ exports.create = (req, res) => {
   });
 
   // Save Tutorial in the database
-  Vocab.create(tutorial, (err, data) => {
+  Vocab.create(vocab, (err, data) => {
     if (err)
       res.status(500).send({
         message:

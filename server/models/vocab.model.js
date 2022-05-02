@@ -15,8 +15,8 @@ Vocab.create = (newVocab, result) => {
       return;
     }
 
-    console.log("created tutorial: ", { id: res.insertId, ...newTutorial });
-    result(null, { id: res.insertId, ...newTutorial });
+    console.log("created vocab: ", res.insertId);
+    result(null, { id: res.insertId, word: newVocab.word, description: newVocab.description });
   });
 };
 
@@ -29,7 +29,7 @@ Vocab.findById = (id, result) => {
     }
 
     if (res.length) {
-      console.log("found tutorial: ", res[0]);
+      console.log("found vocab: ", res[0]);
       result(null, res[0]);
       return;
     }
@@ -53,15 +53,15 @@ Vocab.search = (word, result) => {
       return;
     }
 
-    console.log("tutorials: ", res);
+    console.log("vocabs: ", res);
     result(null, res);
   });
 };
 
-Vocab.updateById = (id, tutorial, result) => {
+Vocab.updateById = (id, vocab, result) => {
   sql.query(
     "UPDATE vocab SET word = ?, description = ? WHERE id = ?",
-    [tutorial.word, tutorial.description, id],
+    [vocab.word, vocab.description, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -75,8 +75,8 @@ Vocab.updateById = (id, tutorial, result) => {
         return;
       }
 
-      console.log("updated tutorial: ", { id: id, ...tutorial });
-      result(null, { id: id, ...tutorial });
+      console.log("updated vocab: ", vocab);
+      result(null, vocab);
     }
   );
 };
@@ -95,7 +95,7 @@ Vocab.remove = (id, result) => {
       return;
     }
 
-    console.log("deleted tutorial with id: ", id);
+    console.log("deleted vocab with id: ", id);
     result(null, res);
   });
 };

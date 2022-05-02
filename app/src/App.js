@@ -6,6 +6,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import AddExercise from './components/add-exercise.component';
 import Exercise from './components/exercise.component';
 import ExercisesList from './components/exercise-list.component';
+import AddVocab from './components/add-vocab.component';
 
 class App extends Component {
   // const options = [
@@ -19,7 +20,7 @@ class App extends Component {
 
     return (
       <div>
-        <AddExercise/>
+        <AddVocab/>
         {/* <div className="navbar navbar-expand navbar-dark bg-dark">
             <a href="/exercises" className="navbar-brand">
               bezKoder

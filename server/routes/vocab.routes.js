@@ -7,10 +7,10 @@ module.exports = app => {
     router.post("/", vocab.create);
   
     // Retrieve all Tutorials
-    router.get("/", vocab.findAll);
+    router.get("/", vocab.search);
   
     // Retrieve a single Tutorial with id
-    router.get("/:id", vocab.search);
+    router.get("/:id", vocab.findOne);
   
     // Update a Tutorial with id
     router.put("/:id", vocab.update);

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ExerciseDataService from "../services/exercise.service";
+import VocabDataService from "../services/vocab.service";
 export default class AddVocab extends Component {
   constructor(props) {
     super(props);
     this.onChangeWord = this.onChangeWord.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.saveExercise = this.saveExercise.bind(this);
-    this.newExercise = this.newExercise.bind(this);
+    this.saveVocab = this.saveVocab.bind(this);
+    this.newVocab = this.newVocab.bind(this);
     this.state = {
       id: null,
       word: "",
@@ -16,7 +16,7 @@ export default class AddVocab extends Component {
   }
   onChangeWord(e) {
     this.setState({
-      name: e.target.value
+      word: e.target.value
     });
   }
   onChangeDescription(e) {
@@ -24,13 +24,13 @@ export default class AddVocab extends Component {
       description: e.target.value
     });
   }
-  saveExercise() {
+  saveVocab() {
     let data = {
-      name: this.state.word,
+      word: this.state.word,
       description: this.state.description,
     };
 
-    ExerciseDataService.create(data)
+    VocabDataService.create(data)
       .then(response => {
         this.setState({
           id: response.data.id,
@@ -44,7 +44,7 @@ export default class AddVocab extends Component {
         console.log(e);
       });
   }
-  newExercise() {
+  newVocab() {
     this.setState({
         id: null,
         word: "",
@@ -58,7 +58,7 @@ export default class AddVocab extends Component {
           {this.state.submitted ? (
             <div>
               <h4>You Added Vocab Successfully!</h4>
-              <button className="btn btn-success" onClick={this.newExercise}>
+              <button className="btn btn-success" onClick={() => this.newVocab()}>
                 Add Another
               </button>
             </div>
@@ -69,11 +69,9 @@ export default class AddVocab extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  id="Word"
                   required
                   value={this.state.word}
-                  onChange={this.onChangeWord}
-                  name="word"
+                  onChange={(e) => this.onChangeWord(e)}
                 />
               </div>
               <div className="form-group">
@@ -81,14 +79,12 @@ export default class AddVocab extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  id="description"
                   required
                   value={this.state.description}
-                  onChange={this.onChangeDescription}
-                  name="description"
+                  onChange={(e) => this.onChangeDescription(e)}
                 />
               </div>
-              <button onClick={this.saveExercise} className="btn btn-success">
+              <button onClick={() => this.saveVocab()} className="btn btn-success">
                 Add
               </button>
             </div>
