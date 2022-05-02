@@ -1,4 +1,4 @@
-const dbConfig = require("../config/exercises.config");
+const dbConfig = require("../config/server.config");
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -15,4 +15,5 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.exercises = require("./exercise.model.js")(sequelize, Sequelize);
+db.vocab = require("./vocab.model")(sequelize, Sequelize);
 module.exports = db;
