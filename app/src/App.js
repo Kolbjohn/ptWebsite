@@ -35,9 +35,27 @@ class App extends Component {
     return (
       <div>
         {!this.state.isAddVocab ? (
+          <div>
+          <button
+          className="btn btn-outline-secondary"
+          type="button"
+          onClick={() => this.setState({isAddVocab: true})}
+        >
+          Add
+        </button>
           <VocabList />
+        </div>
         ) : (
+          <div>
+          <button
+          className="btn btn-outline-secondary"
+          type="button"
+          onClick={() => this.setState({isAddVocab: false})}
+        >
+          Search
+        </button>
             <AddVocab />
+        </div>
         )}
         {/* <div className="navbar navbar-expand navbar-dark bg-dark">
             <a href="/exercises" className="navbar-brand">

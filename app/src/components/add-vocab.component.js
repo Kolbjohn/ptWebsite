@@ -79,13 +79,13 @@ export default class AddVocab extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  required
+                  required="true"
                   value={this.state.description}
                   onChange={(e) => this.onChangeDescription(e)}
                 />
               </div>
               <button onClick={() => this.saveVocab()} className="btn btn-success">
-                Add
+                Submit
               </button>
             </div>
           )}

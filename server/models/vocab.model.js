@@ -46,6 +46,8 @@ Vocab.search = (word, result) => {
     query += ` and word LIKE '%${word}%'`;
   }
 
+  query += ` ORDER BY word`
+
   sql.query(query, (err, res) => {
     if (err) {
       console.log("error: ", err);
