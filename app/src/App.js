@@ -7,6 +7,7 @@ import AddExercise from './components/add-exercise.component';
 import Exercise from './components/exercise.component';
 import ExercisesList from './components/exercise-list.component';
 import AddVocab from './components/add-vocab.component';
+import VocabList from './components/vocab-list.component';
 
 class App extends Component {
   // const options = [
@@ -16,11 +17,28 @@ class App extends Component {
   //   { value: 'Toes', label: 'Toes' }
   // ];
 
+  constructor(props) {
+    super(props);
+    this.state = { 
+      isAddVocab: false
+    };
+  }
+  componentDidMount() {
+    this.setState({
+      isAddVocab: false
+    });
+  }
+
   render() {
+    console.log(this.state.isAddVocab);
 
     return (
       <div>
-        <AddVocab/>
+        {!this.state.isAddVocab ? (
+          <VocabList />
+        ) : (
+            <AddVocab />
+        )}
         {/* <div className="navbar navbar-expand navbar-dark bg-dark">
             <a href="/exercises" className="navbar-brand">
               bezKoder

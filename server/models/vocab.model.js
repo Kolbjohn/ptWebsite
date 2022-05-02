@@ -42,8 +42,8 @@ Vocab.findById = (id, result) => {
 Vocab.search = (word, result) => {
   let query = "SELECT * FROM vocab where 1 = 1";
 
-  if (word) {
-    query += ` WHERE title LIKE '%${word}%'`;
+  if (typeof word === 'string') {
+    query += ` and word LIKE '%${word}%'`;
   }
 
   sql.query(query, (err, res) => {

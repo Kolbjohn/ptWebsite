@@ -1,8 +1,5 @@
 import http from "../http-common";
 class VocabDataService {
-  getAll() {
-    return http.get("/vocab");
-  }
   get(id) {
     return http.get(`/vocab/${id}`);
   }
@@ -15,8 +12,8 @@ class VocabDataService {
   delete(id) {
     return http.delete(`/vocab/${id}`);
   }
-  findByLocation(location) {
-    return http.get(`/vocab?location=${location}`);
+  search(data) {
+    return http.post(`/vocab/search`, data);
   }
 }
 export default new VocabDataService();

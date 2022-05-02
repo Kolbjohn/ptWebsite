@@ -28,9 +28,9 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database (with condition).
 exports.search = (req, res) => {
-  const title = req.query.title;
+  const word = req.body.word;
 
-  Vocab.search(title, (err, data) => {
+  Vocab.search(word, (err, data) => {
     if (err)
       res.status(500).send({
         message:

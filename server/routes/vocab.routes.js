@@ -7,7 +7,7 @@ module.exports = app => {
     router.post("/", vocab.create);
   
     // Retrieve all Tutorials
-    router.get("/", vocab.search);
+    router.post("/search", vocab.search);
   
     // Retrieve a single Tutorial with id
     router.get("/:id", vocab.findOne);
